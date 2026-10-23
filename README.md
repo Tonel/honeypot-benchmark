@@ -11,7 +11,7 @@ It is plain HTML, CSS and JavaScript with no build step.
 
 Once GitHub Pages is enabled for this repo (see below), the site is served at:
 
-`https://tonel.github.io/honeypot-trap-test/`
+`https://tonel.github.io/honeypot-benchmark/`
 
 ## Repository layout
 
@@ -50,8 +50,6 @@ Once GitHub Pages is enabled for this repo (see below), the site is served at:
 | 19  | `content-visibility:hidden`                          | `trap/19-content-visibility`      |
 | 20  | `nofollow` link to a path disallowed in `robots.txt` | `trap/20-robots-disallowed`       |
 
-Traps 17 and 18 are not in the DOM when JavaScript runs, so DOM-based checks cannot see them.
-
 ### Controls:
 
 | Control                         | href                                                                                         |
@@ -61,3 +59,55 @@ Traps 17 and 18 are not in the DOM when JavaScript runs, so DOM-based checks can
 | Below the fold                  | `control/below-fold-price-list`                                                              |
 | Lazy-loaded                     | `control/lazy-loaded-newsletter`                                                             |
 | Low-contrast footer             | `control/low-contrast-cookie-settings`                                                       |
+
+## Benchmark
+
+`benchmark/` runs eight link-detection methods against the live page and writes every result to one file, `results/benchmark.json`. Scenarios 9 and 10 use the ScrapingBee API, so they need an API key. Every Playwright, Selenium, or ScrapingBee scenario does a plain page load with the tool's default settings: no waiting, scrolling or other setup.
+
+| Script                            | Method                                                                                               | Runs on                            |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| `s01_bs4_find_all.py`             | BeautifulSoup `find_all('a')`                                                                        | Static HTML                        |
+| `s02_bs4_inline_style.py`         | BeautifulSoup with an inline-style filter                                                            | Static HTML                        |
+| `s03_selenium_is_displayed.py`    | Selenium `is_displayed()`                                                                            | Chromium, Firefox, WebKit (Safari) |
+| `s04_playwright_is_visible.py`    | Playwright `is_visible()`                                                                            | Chromium, Firefox, WebKit          |
+| `s05_playwright_click_trial.py`   | Playwright `click(trial=True)`                                                                       | Chromium, Firefox, WebKit          |
+| `s06_check_visibility_default.py` | `Element.checkVisibility()`, default options                                                         | Chromium, Firefox, WebKit          |
+| `s07_check_visibility_all.py`     | `Element.checkVisibility()` with `opacityProperty`, `visibilityProperty` and `contentVisibilityAuto` | Chromium, Firefox, WebKit          |
+| `s08_custom_check.py`             | Custom check: computed style, box, contrast, overlap                                                 | Chromium, Firefox, WebKit          |
+| `s09_scrapingbee_markdown.py`     | ScrapingBee with JavaScript rendering and markdown output                                            | ScrapingBee cloud                  |
+| `s10_scrapingbee_ai_extract.py`   | ScrapingBee AI extraction, "all links on the page"                                                   | ScrapingBee cloud                  |
+| `common.py`                       | Target URL, ground truth, result helpers                                                             |                                    |
+| `benchmark.py`                    | Runs every scenario and writes the JSON                                                              |                                    |
+
+### Setup
+
+1. Install the pinned Python packages and the Playwright browsers. Run these from the repo root with your virtual environment active:
+
+   ```bash
+   pip install -e .
+   playwright install chromium firefox webkit
+   ```
+
+   On Linux, also run `playwright install-deps` so WebKit can start.
+
+2. Selenium drives the browsers installed on your machine. Install Google Chrome and Mozilla Firefox. Selenium Manager downloads the matching chromedriver and geckodriver on the first run, so an internet connection is needed.
+
+3. Selenium with Safari needs macOS. Run `sudo safaridriver --enable` once. In Safari, enable **Settings → Advanced → Show features for web developers**, then **Develop → Allow Remote Automation**. On Windows and Linux, scenario 3 records WebKit as `unavailable`. Playwright's WebKit (scenarios 4–8) works on all three systems.
+
+4. ScrapingBee (scenarios 9 and 10). Copy `.env.sample` to `.env` and replace the value with your [ScrapingBee API key](https://www.scrapingbee.com/documentation/#getting-started). Scenario 9 costs `5` credits per page (JavaScript rendering). Scenario 10 costs `10` credits (5 for rendering and 5 for AI extraction). Each of these runs records the credits charged in its `credits` field.
+
+### Run
+
+```bash
+python benchmark/benchmark.py                                  # all scenarios, live page
+python benchmark/benchmark.py --only 03 04                     # selected scenarios
+python benchmark/benchmark.py --target http://localhost:8000/  # a local copy, after `python -m http.server 8000`
+```
+
+### Output
+
+`results/benchmark.json` contains:
+
+- `target`, `run_at`, and `environment` (Python, OS, and package versions).
+- `ground_truth`: The 20 traps and 5 controls, with `kind`, `number` and `label`.
+- `methods`: One entry per scenario, with its `name`, the `tool` and its version, and `runs`. Each run is keyed by where the method ran: `static_html` for scenarios 1 and 2, `scrapingbee` for scenarios 9 and 10, otherwise `chromium`, `firefox` or `webkit`. Runs for scenarios 9 and 10 also have `credits` (number of credits spent via the ScrapingBee API) and `output` (the markdown or AI answer, as returned). A run has a `version` (`null` for static HTML) and `results`, unless it could not run: then it has `unavailable` (the reason) or `error` instead. Each href in `results` has `discovered` (the method listed the link) and `suspected` (the method treated it as hidden). A trap is caught when `suspected` is `true`. For a control, `suspected: true` is a false positive.
