@@ -56,7 +56,7 @@ GROUND_TRUTH.update(
 
 
 def collect(pairs):
-    """Turn (href, marked_as_hidden) pairs into one boolean per trap and control.
+    """Turn (href, hidden) pairs into one boolean per trap and control.
 
     Only the 20 traps and 5 controls are kept. A link that is not on the page counts as False.
     """
@@ -64,13 +64,25 @@ def collect(pairs):
     return {href: href in marked for href in GROUND_TRUTH}
 
 
+def split(marks, field):
+    """Split one boolean per link into the hidden_traps and controls maps, under the given field name."""
+    return {
+        "hidden_traps": {href: {field: marks[href]} for href in TRAPS},
+        "controls": {href: {field: marks[href]} for href in CONTROLS},
+    }
+
+
 def ok(run_version, marks):
     """run_version is the browser version, or None when no browser was used."""
-    return {
-        "version": run_version,
-        "hidden_traps": {href: {"marked_as_hidden": marks[href]} for href in TRAPS},
-        "controls": {href: {"marked_as_hidden": marks[href]} for href in CONTROLS},
-    }
+    return {"version": run_version, **split(marks, "hidden")}
+
+
+def left_out(text, target):
+    """One boolean per known link: True if the link does NOT appear in the ScrapingBee output text.
+
+    ScrapingBee does not judge visibility. A link it leaves out is treated as hidden.
+    """
+    return {href: not mentioned(text, target, href) for href in GROUND_TRUTH}
 
 
 def unavailable(reason):
