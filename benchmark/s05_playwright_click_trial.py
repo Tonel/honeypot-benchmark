@@ -13,9 +13,8 @@ NAME = "Playwright click(trial=True)"
 
 def check(page):
     pairs = []
-    links = page.locator("a[href]")
-    for i in range(links.count()):
-        link = links.nth(i)
+    # Snapshot the links first: a trial click scrolls, which can insert links and shift indexes.
+    for link in page.query_selector_all("a[href]"):
         try:
             link.click(trial=True, timeout=1000)
             flagged = False

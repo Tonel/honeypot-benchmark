@@ -1,7 +1,7 @@
 """Scenario 9: ScrapingBee with JavaScript rendering and markdown output.
 
 Counts which trap and control URLs appear in the markdown. The markdown is not checked for
-hidden links, so suspected is always false here, as in scenario 1.
+hidden links, so marked_as_hidden is always false here, as in scenario 1.
 """
 
 from common import GROUND_TRUTH, collect, mentioned, ok, package_version, run_scrapingbee

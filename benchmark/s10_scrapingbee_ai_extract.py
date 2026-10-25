@@ -1,7 +1,7 @@
 """Scenario 10: ScrapingBee AI extraction asked for "all links on the page".
 
 Counts which trap and control URLs appear in the AI answer. The answer is not checked for
-hidden links, so suspected is always false here, as in scenario 1.
+hidden links, so marked_as_hidden is always false here, as in scenario 1.
 """
 
 from common import (

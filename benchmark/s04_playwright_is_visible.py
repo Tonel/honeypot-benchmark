@@ -7,9 +7,7 @@ NAME = "Playwright is_visible()"
 
 def check(page):
     pairs = []
-    links = page.locator("a[href]")
-    for i in range(links.count()):
-        link = links.nth(i)
+    for link in page.query_selector_all("a[href]"):
         pairs.append((link.get_attribute("href"), not link.is_visible()))
     return pairs
 

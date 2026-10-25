@@ -56,19 +56,21 @@ GROUND_TRUTH.update(
 
 
 def collect(pairs):
-    """Turn (href, suspected) pairs into one result per known href. Undiscovered hrefs are listed too."""
-    results = {}
-    for href, suspected in pairs:
-        previous = results.get(href, {"suspected": False})
-        results[href] = {"discovered": True, "suspected": previous["suspected"] or suspected}
-    for href in GROUND_TRUTH:
-        results.setdefault(href, {"discovered": False, "suspected": False})
-    return results
+    """Turn (href, marked_as_hidden) pairs into one boolean per trap and control.
+
+    Only the 20 traps and 5 controls are kept. A link that is not on the page counts as False.
+    """
+    marked = {href for href, hidden in pairs if hidden}
+    return {href: href in marked for href in GROUND_TRUTH}
 
 
-def ok(run_version, results):
+def ok(run_version, marks):
     """run_version is the browser version, or None when no browser was used."""
-    return {"version": run_version, "results": results}
+    return {
+        "version": run_version,
+        "hidden_traps": {href: {"marked_as_hidden": marks[href]} for href in TRAPS},
+        "controls": {href: {"marked_as_hidden": marks[href]} for href in CONTROLS},
+    }
 
 
 def unavailable(reason):
