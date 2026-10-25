@@ -58,10 +58,12 @@ GROUND_TRUTH.update(
 def collect(pairs):
     """Turn (href, hidden) pairs into one boolean per trap and control.
 
-    Only the 20 traps and 5 controls are kept. A link that is not on the page counts as False.
+    Only the 20 traps and 5 controls are kept. A link the method did not find counts as hidden,
+    the same as a link that ScrapingBee leaves out of its output.
     """
+    found = {href for href, _ in pairs}
     marked = {href for href, hidden in pairs if hidden}
-    return {href: href in marked for href in GROUND_TRUTH}
+    return {href: href not in found or href in marked for href in GROUND_TRUTH}
 
 
 def split(marks, field):
