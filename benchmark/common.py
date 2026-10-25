@@ -40,9 +40,7 @@ TRAPS = {
 # href -> description. None of these should be flagged.
 CONTROLS = {
     "#skip-to-content": "Skip to content link",
-    "control/mobile-menu-services": "Collapsed mobile menu",
-    "control/mobile-menu-pricing": "Collapsed mobile menu",
-    "control/mobile-menu-contact": "Collapsed mobile menu",
+    "control/mobile-offer": "Collapsed mobile menu",
     "control/below-fold-price-list": "Below the fold",
     "control/lazy-loaded-newsletter": "Lazy-loaded",
     "control/low-contrast-cookie-settings": "Low-contrast footer link",

@@ -8,7 +8,6 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; font: 16px/1.6 system-ui, sans-serif; color: var(--ink); background: var(--paper); }
-[hidden] { display: none !important; }
 h1, h2, h3 { line-height: 1.2; }
 h2 { font-size: 1.9rem; margin: 0 0 1.25rem; }
 a { color: var(--accent); }
@@ -29,7 +28,8 @@ img, svg { max-width: 100%; }
 .desktop-nav { display: flex; gap: 18px; margin-left: auto; }
 .desktop-nav a { color: var(--ink); text-decoration: none; }
 .menu-toggle { display: none; margin-left: auto; }
-.mobile-menu { display: grid; gap: 4px; padding: 8px 20px 16px; }
+.mobile-menu { gap: 4px; padding: 8px 20px 16px; }
+.mobile-menu:not([hidden]) { display: grid; }
 .mobile-menu a { padding: 8px 0; }
 
 /* Buttons */

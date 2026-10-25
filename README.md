@@ -55,7 +55,7 @@ Once GitHub Pages is enabled for this repo (see below), the site is served at:
 | Control                         | href                                                                                         |
 | ------------------------------- | -------------------------------------------------------------------------------------------- |
 | Skip to content                 | `#skip-to-content`                                                                           |
-| Collapsed mobile menu (3 links) | `control/mobile-menu-services`, `control/mobile-menu-pricing`, `control/mobile-menu-contact` |
+| Collapsed mobile menu           | `control/mobile-offer`                                                                       |
 | Below the fold                  | `control/below-fold-price-list`                                                              |
 | Lazy-loaded                     | `control/lazy-loaded-newsletter`                                                             |
 | Low-contrast footer             | `control/low-contrast-cookie-settings`                                                       |
