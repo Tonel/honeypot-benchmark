@@ -26,7 +26,7 @@ TRAPS = {
     "trap/09-translate-200vw": (9, "transform: translateX(-200vw)"),
     "trap/10-clip-path": (10, "clip-path: inset(100%)"),
     "trap/11-clip-rect": (11, "clip: rect(0 0 0 0)"),
-    "trap/12-same-colour": (12, "Text the same colour as the background"),
+    "trap/12-same-color": (12, "Text the same color as the background"),
     "trap/13-covered-by-overlay": (13, "Covered by an overlay"),
     "trap/14-hidden-attribute": (14, "hidden attribute"),
     "trap/15-aria-hidden": (15, 'aria-hidden="true" only'),

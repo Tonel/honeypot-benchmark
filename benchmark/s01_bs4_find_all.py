@@ -1,11 +1,11 @@
-"""Scenario 1: BeautifulSoup find_all('a') on the static HTML. It lists links and flags nothing."""
+"""Scenario 1: Beautiful Soup find_all('a') on the static HTML. It lists links and flags nothing."""
 
 import requests
 from bs4 import BeautifulSoup
 
 from common import collect, ok, package_version
 
-NAME = "BeautifulSoup find_all('a')"
+NAME = "Beautiful Soup find_all('a')"
 
 
 def run(target):

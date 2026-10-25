@@ -101,7 +101,7 @@ details p { color: var(--muted); margin: 8px 0 0; }
 .t-transform { display: inline-block; transform: translateX(-200vw); } /* 09 */
 .t-clip-path { display: inline-block; clip-path: inset(100%); }       /* 10 */
 .t-clip-rect { position: absolute; clip: rect(0 0 0 0); }     /* 11 */
-.site-footer .t-same-colour { color: #f4f1ea; }               /* 12, same as footer background */
+.site-footer .t-same-color { color: #f4f1ea; }               /* 12, same as footer background */
 .t-overlay-wrap { position: relative; display: inline-block; } /* 13 */
 .t-overlay { position: absolute; inset: 0; background: #f4f1ea; }     /* 13 */
 .t-content-hidden { content-visibility: hidden; }             /* 19 */

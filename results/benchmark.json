@@ -1,0 +1,1932 @@
+{
+  "target": "https://tonel.github.io/honeypot-benchmark/",
+  "run_at": "2026-10-25T15:31:25+00:00",
+  "environment": {
+    "python": "3.13.11",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "playwright": "1.64.1",
+      "selenium": "4.51.0",
+      "beautifulsoup4": "4.15.0",
+      "requests": "2.34.2"
+    }
+  },
+  "ground_truth": {
+    "trap/01-inline-display-none": {
+      "kind": "trap",
+      "number": 1,
+      "label": "Inline display:none"
+    },
+    "trap/02-stylesheet-display-none": {
+      "kind": "trap",
+      "number": 2,
+      "label": "display:none from a stylesheet"
+    },
+    "trap/03-visibility-hidden": {
+      "kind": "trap",
+      "number": 3,
+      "label": "visibility:hidden"
+    },
+    "trap/04-opacity-zero": {
+      "kind": "trap",
+      "number": 4,
+      "label": "opacity:0"
+    },
+    "trap/05-opacity-parent": {
+      "kind": "trap",
+      "number": 5,
+      "label": "opacity:0 on the parent"
+    },
+    "trap/06-zero-size": {
+      "kind": "trap",
+      "number": 6,
+      "label": "Zero width and height"
+    },
+    "trap/07-font-size-zero": {
+      "kind": "trap",
+      "number": 7,
+      "label": "font-size:0"
+    },
+    "trap/08-left-minus-9999": {
+      "kind": "trap",
+      "number": 8,
+      "label": "left:-9999px"
+    },
+    "trap/09-translate-200vw": {
+      "kind": "trap",
+      "number": 9,
+      "label": "transform: translateX(-200vw)"
+    },
+    "trap/10-clip-path": {
+      "kind": "trap",
+      "number": 10,
+      "label": "clip-path: inset(100%)"
+    },
+    "trap/11-clip-rect": {
+      "kind": "trap",
+      "number": 11,
+      "label": "clip: rect(0 0 0 0)"
+    },
+    "trap/12-same-color": {
+      "kind": "trap",
+      "number": 12,
+      "label": "Text the same color as the background"
+    },
+    "trap/13-covered-by-overlay": {
+      "kind": "trap",
+      "number": 13,
+      "label": "Covered by an overlay"
+    },
+    "trap/14-hidden-attribute": {
+      "kind": "trap",
+      "number": 14,
+      "label": "hidden attribute"
+    },
+    "trap/15-aria-hidden": {
+      "kind": "trap",
+      "number": 15,
+      "label": "aria-hidden=\"true\" only"
+    },
+    "trap/16-hidden-after-500ms": {
+      "kind": "trap",
+      "number": 16,
+      "label": "Hidden by JavaScript 500 ms after load"
+    },
+    "trap/17-noscript": {
+      "kind": "trap",
+      "number": 17,
+      "label": "Inside a noscript element"
+    },
+    "trap/18-html-comment": {
+      "kind": "trap",
+      "number": 18,
+      "label": "Inside an HTML comment"
+    },
+    "trap/19-content-visibility": {
+      "kind": "trap",
+      "number": 19,
+      "label": "content-visibility:hidden"
+    },
+    "trap/20-robots-disallowed": {
+      "kind": "trap",
+      "number": 20,
+      "label": "nofollow link to a robots.txt-disallowed path"
+    },
+    "#skip-to-content": {
+      "kind": "control",
+      "number": null,
+      "label": "Skip to content link"
+    },
+    "control/mobile-offer": {
+      "kind": "control",
+      "number": null,
+      "label": "Collapsed mobile menu"
+    },
+    "control/below-fold-price-list": {
+      "kind": "control",
+      "number": null,
+      "label": "Below the fold"
+    },
+    "control/lazy-loaded-newsletter": {
+      "kind": "control",
+      "number": null,
+      "label": "Lazy-loaded"
+    },
+    "control/low-contrast-cookie-settings": {
+      "kind": "control",
+      "number": null,
+      "label": "Low-contrast footer link"
+    }
+  },
+  "methods": {
+    "01": {
+      "name": "Beautiful Soup find_all('a')",
+      "tool": "beautifulsoup4 4.15.0",
+      "runs": {
+        "static_html": {
+          "version": null,
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": false
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": false
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": false
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": false
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": false
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": false
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": false
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        }
+      }
+    },
+    "02": {
+      "name": "Beautiful Soup with an inline-style filter",
+      "tool": "beautifulsoup4 4.15.0",
+      "runs": {
+        "static_html": {
+          "version": null,
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": false
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": false
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": false
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": false
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        }
+      }
+    },
+    "03": {
+      "name": "Selenium is_displayed()",
+      "tool": "selenium 4.51.0",
+      "runs": {
+        "chromium": {
+          "version": "155.0.8059.86",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": true
+            },
+            "trap/05-opacity-parent": {
+              "hidden": true
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": true
+            },
+            "trap/09-translate-200vw": {
+              "hidden": true
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "firefox": {
+          "version": "158.0.1",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": true
+            },
+            "trap/05-opacity-parent": {
+              "hidden": true
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": true
+            },
+            "trap/09-translate-200vw": {
+              "hidden": true
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "webkit": {
+          "unavailable": "Selenium has no WebKit driver on this OS; safaridriver runs on macOS only"
+        }
+      }
+    },
+    "04": {
+      "name": "Playwright is_visible()",
+      "tool": "playwright 1.64.1",
+      "runs": {
+        "chromium": {
+          "version": "156.0.8078.4",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "firefox": {
+          "version": "157.0",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": true
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "webkit": {
+          "version": "27.2",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        }
+      }
+    },
+    "05": {
+      "name": "Playwright click(trial=True)",
+      "tool": "playwright 1.64.1",
+      "runs": {
+        "chromium": {
+          "version": "156.0.8078.4",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": true
+            },
+            "trap/09-translate-200vw": {
+              "hidden": true
+            },
+            "trap/10-clip-path": {
+              "hidden": true
+            },
+            "trap/11-clip-rect": {
+              "hidden": true
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": true
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": true
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "firefox": {
+          "version": "157.0",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": true
+            },
+            "trap/09-translate-200vw": {
+              "hidden": true
+            },
+            "trap/10-clip-path": {
+              "hidden": true
+            },
+            "trap/11-clip-rect": {
+              "hidden": true
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": true
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": true
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "webkit": {
+          "version": "27.2",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": true
+            },
+            "trap/09-translate-200vw": {
+              "hidden": true
+            },
+            "trap/10-clip-path": {
+              "hidden": true
+            },
+            "trap/11-clip-rect": {
+              "hidden": true
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": true
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": true
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        }
+      }
+    },
+    "06": {
+      "name": "Element.checkVisibility() (default options)",
+      "tool": "playwright 1.64.1",
+      "runs": {
+        "chromium": {
+          "version": "156.0.8078.4",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": false
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "firefox": {
+          "version": "157.0",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": false
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "webkit": {
+          "version": "27.2",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": false
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        }
+      }
+    },
+    "07": {
+      "name": "Element.checkVisibility() with opacityProperty, visibilityProperty and contentVisibilityAuto",
+      "tool": "playwright 1.64.1",
+      "runs": {
+        "chromium": {
+          "version": "156.0.8078.4",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": true
+            },
+            "trap/05-opacity-parent": {
+              "hidden": true
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "firefox": {
+          "version": "157.0",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": true
+            },
+            "trap/05-opacity-parent": {
+              "hidden": true
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "webkit": {
+          "version": "27.2",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": true
+            },
+            "trap/05-opacity-parent": {
+              "hidden": true
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        }
+      }
+    },
+    "08": {
+      "name": "Custom check (computed style, box, contrast, overlap) via Playwright",
+      "tool": "playwright 1.64.1",
+      "runs": {
+        "chromium": {
+          "version": "156.0.8078.4",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": true
+            },
+            "trap/05-opacity-parent": {
+              "hidden": true
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": true
+            },
+            "trap/09-translate-200vw": {
+              "hidden": true
+            },
+            "trap/10-clip-path": {
+              "hidden": true
+            },
+            "trap/11-clip-rect": {
+              "hidden": true
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": true
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "firefox": {
+          "version": "157.0",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": true
+            },
+            "trap/05-opacity-parent": {
+              "hidden": true
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": true
+            },
+            "trap/09-translate-200vw": {
+              "hidden": true
+            },
+            "trap/10-clip-path": {
+              "hidden": true
+            },
+            "trap/11-clip-rect": {
+              "hidden": true
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": true
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        },
+        "webkit": {
+          "version": "27.2",
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": true
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": true
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": true
+            },
+            "trap/04-opacity-zero": {
+              "hidden": true
+            },
+            "trap/05-opacity-parent": {
+              "hidden": true
+            },
+            "trap/06-zero-size": {
+              "hidden": true
+            },
+            "trap/07-font-size-zero": {
+              "hidden": true
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": true
+            },
+            "trap/09-translate-200vw": {
+              "hidden": true
+            },
+            "trap/10-clip-path": {
+              "hidden": true
+            },
+            "trap/11-clip-rect": {
+              "hidden": true
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": true
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": true
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": true
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": true
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": true
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          }
+        }
+      }
+    },
+    "09": {
+      "name": "ScrapingBee with JavaScript rendering and markdown output",
+      "tool": "scrapingbee 2.2.0",
+      "runs": {
+        "scrapingbee": {
+          "version": null,
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": false
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": false
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": false
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": false
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": false
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": false
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": false
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          },
+          "credits": "5",
+          "output": "[Skip to content](#skip-to-content)\n\n[Hale & Thistle](#top)\n\n[Services](#services)\n[Pricing](#pricing)\n[FAQ](#faq)\n[Contact](#contact)\n\n[Book a consultation](#contact)\nMenu\n\n[Services](#services)\n[Special mobile offer](control/mobile-offer)\n[Pricing](#pricing)\n[FAQ](#faq)\n[Contact](#contact)\n\nLicensed wizard \u00b7 38 years in practice\n\nA professional wizard for the spells that have gone wrong.\n==========================================================\n\nCorvin Hale restores cursed households, warded properties and enchanted businesses. Fixed-fee assessments, written reports and no lingering smoke.\n\n[Book a consultation](#contact)\n[See services](#services)\n\nServices\n--------\n\n### Curse removal\n\nAssessment, containment and a written removal plan for hexes, jinxes and inherited bad luck.\n\n### Household wards\n\nProtective wards for homes and shops, inspected every year and renewed before they lapse.\n\n### Spell audits\n\nChecks on enchanted equipment and contracts for businesses that rely on magic day to day.\n\nAbout the practice\n------------------\n\nCorvin trained with the Guild of Lesser Arts and has been licensed since 1988. The practice is a two-person firm in Little Mallow, with one apprentice and one very opinionated cat.\n\nCases closed\n:   312\n\nYears licensed\n:   38\n\nRepeat curses\n:   0\n\n> \u201cThe wards on our bakery have held through two storms and one very angry goose.\u201d\n>\n> Dorothy Pell, Little Mallow\n\n> \u201cClear report, fair price, and the curse is gone. Our accountant is still confused.\u201d\n>\n> Tom Ashby, Ashby Joinery\n\nPricing\n-------\n\n### Assessment\n\n\u00a390\n\nOne visit, one written report, fixed fee.\n\n### Ward renewal\n\n\u00a3240\n\nYearly inspection and renewal for up to four rooms.\n\n### Removal\n\nFrom \u00a3480\n\nQuoted after assessment. No work starts without your sign-off.\n\nFrequently asked questions\n--------------------------\n\nDo you work with pets?\n\nYes, though the cat has the final say on wards near the kitchen.\n\n\nIs the work insured?\n\nYes. Certificates are available on request before any work starts.\n\n\nHow quickly can you come out?\n\nUsually within three working days. Urgent curses are handled the same day where possible.\n\nBook a consultation\n-------------------\n\nName \nEmail \nWhat went wrong? \nSend request\n\nHale & Thistle Sorcery\n\n14 Mill Lane, Little Mallow  \nMon\u2013Fri, 9am\u20135pm\n\n### Resources\n\n* [Wizard liability insurance](trap/01-inline-display-none)\n* [Apprentice enrolment](trap/02-stylesheet-display-none)\n* [Familiar care guide](trap/03-visibility-hidden)\n* [Mana tax calculator](trap/04-opacity-zero)\n* [Ward renewal forms](trap/05-opacity-parent)\n* [Spell archive](trap/06-zero-size)\n* [Hex removal rates](trap/07-font-size-zero)\n* [Hire a wizard abroad](trap/08-left-minus-9999)\n* [Wizard of the month](trap/09-translate-200vw)\n* [Enchanted glossary](trap/10-clip-path)\n* [Charm certificates](trap/11-clip-rect)\n* [Hex insurance quotes](trap/12-same-colour)\n* [Gift vouchers](trap/13-covered-by-overlay)\n* [Wizard fleet hire](trap/14-hidden-attribute)\n* [Ghost tours](trap/15-aria-hidden)\n* [Cauldron repair](trap/16-hidden-after-500ms)\n* [Dragon-proof paperwork](trap/17-noscript)\n* [Potion warranty](trap/19-content-visibility)\n* [Member-only grimoire](trap/20-robots-disallowed)\n\n### Company\n\n* [About](#about)\n* [Reviews](#reviews)\n* [Download the price list](control/below-fold-price-list)\n\n\u00a9 2026 Hale & Thistle Sorcery. Fictional business for a test page.\n\n[Cookie settings](control/low-contrast-cookie-settings)"
+        }
+      }
+    },
+    "10": {
+      "name": "ScrapingBee AI extraction (\"all links on the page\")",
+      "tool": "scrapingbee 2.2.0",
+      "runs": {
+        "scrapingbee": {
+          "version": null,
+          "hidden_traps": {
+            "trap/01-inline-display-none": {
+              "hidden": false
+            },
+            "trap/02-stylesheet-display-none": {
+              "hidden": false
+            },
+            "trap/03-visibility-hidden": {
+              "hidden": false
+            },
+            "trap/04-opacity-zero": {
+              "hidden": false
+            },
+            "trap/05-opacity-parent": {
+              "hidden": false
+            },
+            "trap/06-zero-size": {
+              "hidden": false
+            },
+            "trap/07-font-size-zero": {
+              "hidden": false
+            },
+            "trap/08-left-minus-9999": {
+              "hidden": false
+            },
+            "trap/09-translate-200vw": {
+              "hidden": false
+            },
+            "trap/10-clip-path": {
+              "hidden": false
+            },
+            "trap/11-clip-rect": {
+              "hidden": false
+            },
+            "trap/12-same-color": {
+              "hidden": true
+            },
+            "trap/13-covered-by-overlay": {
+              "hidden": false
+            },
+            "trap/14-hidden-attribute": {
+              "hidden": false
+            },
+            "trap/15-aria-hidden": {
+              "hidden": false
+            },
+            "trap/16-hidden-after-500ms": {
+              "hidden": false
+            },
+            "trap/17-noscript": {
+              "hidden": false
+            },
+            "trap/18-html-comment": {
+              "hidden": true
+            },
+            "trap/19-content-visibility": {
+              "hidden": false
+            },
+            "trap/20-robots-disallowed": {
+              "hidden": false
+            }
+          },
+          "controls": {
+            "#skip-to-content": {
+              "hidden": false
+            },
+            "control/mobile-offer": {
+              "hidden": false
+            },
+            "control/below-fold-price-list": {
+              "hidden": false
+            },
+            "control/lazy-loaded-newsletter": {
+              "hidden": true
+            },
+            "control/low-contrast-cookie-settings": {
+              "hidden": false
+            }
+          },
+          "credits": "10",
+          "output": "[Skip to content](#skip-to-content)\n[Hale & Thistle](#top)\n[Services](#services)\n[Pricing](#pricing)\n[FAQ](#faq)\n[Contact](#contact)\n[Book a consultation](#contact)\n[Services](#services)\n[Special mobile offer](control/mobile-offer)\n[Pricing](#pricing)\n[FAQ](#faq)\n[Contact](#contact)\n[Book a consultation](#contact)\n[See services](#services)\n[Wizard liability insurance](trap/01-inline-display-none)\n[Apprentice enrolment](trap/02-stylesheet-display-none)\n[Familiar care guide](trap/03-visibility-hidden)\n[Mana tax calculator](trap/04-opacity-zero)\n[Ward renewal forms](trap/05-opacity-parent)\n[Spell archive](trap/06-zero-size)\n[Hex removal rates](trap/07-font-size-zero)\n[Hire a wizard abroad](trap/08-left-minus-9999)\n[Wizard of the month](trap/09-translate-200vw)\n[Enchanted glossary](trap/10-clip-path)\n[Charm certificates](trap/11-clip-rect)\n[Hex insurance quotes](trap/12-same-colour)\n[Gift vouchers](trap/13-covered-by-overlay)\n[Wizard fleet hire](trap/14-hidden-attribute)\n[Ghost tours](trap/15-aria-hidden)\n[Cauldron repair](trap/16-hidden-after-500ms)\n[Dragon-proof paperwork](trap/17-noscript)\n[Potion warranty](trap/19-content-visibility)\n[Member-only grimoire](trap/20-robots-disallowed)\n[About](#about)\n[Reviews](#reviews)\n[Download the price list](control/below-fold-price-list)\n[Cookie settings](control/low-contrast-cookie-settings)"
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-"""Scenario 2: BeautifulSoup on the static HTML, flagging only inline styles and the hidden attribute."""
+"""Scenario 2: Beautiful Soup on the static HTML, flagging only inline styles and the hidden attribute."""
 
 import re
 
@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 from common import collect, ok, package_version
 
-NAME = "BeautifulSoup with an inline-style filter"
+NAME = "Beautiful Soup with an inline-style filter"
 
 INLINE_HIDING = re.compile(
     r"display\s*:\s*none|visibility\s*:\s*hidden|opacity\s*:\s*0(?![.\d])|font-size\s*:\s*0(?![.\d])"

@@ -7,7 +7,7 @@ NAME = "Custom check (computed style, box, contrast, overlap) via Playwright"
 
 SAFE_LINK_JS = r"""
 (el) => {
-  const rgba = (css) => css.match(/[\d.]+/g).map(Number);
+  const rgba = (css) => (css.match(/[\d.]+/g) || [0, 0, 0, 0]).map(Number);
   const lum = (rgb) => {
     const [r, g, b] = rgb.slice(0, 3).map((c) => (c /= 255) <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
     return 0.2126 * r + 0.7152 * g + 0.0722 * b;
@@ -36,7 +36,7 @@ SAFE_LINK_JS = r"""
     }
   }
 
-  // Contrast: text colour against the nearest opaque background (white if none).
+  // Contrast: text color against the nearest opaque background (white if none).
   let bg = [255, 255, 255];
   for (let n = el; n; n = n.parentElement) {
     const c = rgba(getComputedStyle(n).backgroundColor);
@@ -44,9 +44,10 @@ SAFE_LINK_JS = r"""
   }
   if (el.textContent.trim() && contrast(rgba(getComputedStyle(el).color), bg) < 1.2) return false;
 
-  // Overlap: the element on top at the link's centre must be the link or inside it.
+  // Overlap: the element on top at the link's center must be the link or inside it.
   el.scrollIntoView({ block: 'center', behavior: 'instant' }); // hit-testing only works in the viewport
   const first = el.getClientRects()[0]; // first line box, so wrapped links are tested on text
+  if (!first) return false; // no layout box, so a person cannot see it
   const x = first.left + first.width / 2;
   const y = first.top + first.height / 2;
   if (x < 0 || y < 0 || x >= innerWidth || y >= innerHeight) return true;

@@ -22,6 +22,8 @@ Once GitHub Pages is enabled for this repo (see below), the site is served at:
 | `script.js`      | Mobile menu + trap 16 (hidden 500 ms after load) + lazy-loaded control link handling |
 | `robots.txt`     | Disallows `/trap/` for trap 20                                                       |
 | `pyproject.toml` | Python dependencies for the test and benchmark tooling                               |
+| `benchmark/`     | Benchmark scripts, one per scenario, plus `benchmark.py` to run them all             |
+| `results/`       | Benchmark output: `benchmark.json`                                                   |
 
 ## Trap and control reference
 
@@ -40,7 +42,7 @@ Once GitHub Pages is enabled for this repo (see below), the site is served at:
 | 9   | `transform: translateX(-200vw)`                      | `trap/09-translate-200vw`         |
 | 10  | `clip-path: inset(100%)`                             | `trap/10-clip-path`               |
 | 11  | `clip: rect(0 0 0 0)`                                | `trap/11-clip-rect`               |
-| 12  | Text the same colour as the background               | `trap/12-same-colour`             |
+| 12  | Text the same color as the background                | `trap/12-same-color`              |
 | 13  | Covered by an overlay                                | `trap/13-covered-by-overlay`      |
 | 14  | `hidden` attribute                                   | `trap/14-hidden-attribute`        |
 | 15  | `aria-hidden="true"` only                            | `trap/15-aria-hidden`             |
@@ -50,15 +52,15 @@ Once GitHub Pages is enabled for this repo (see below), the site is served at:
 | 19  | `content-visibility:hidden`                          | `trap/19-content-visibility`      |
 | 20  | `nofollow` link to a path disallowed in `robots.txt` | `trap/20-robots-disallowed`       |
 
-### Controls:
+### Controls
 
-| Control                         | href                                                                                         |
-| ------------------------------- | -------------------------------------------------------------------------------------------- |
-| Skip to content                 | `#skip-to-content`                                                                           |
-| Collapsed mobile menu           | `control/mobile-offer`                                                                       |
-| Below the fold                  | `control/below-fold-price-list`                                                              |
-| Lazy-loaded                     | `control/lazy-loaded-newsletter`                                                             |
-| Low-contrast footer             | `control/low-contrast-cookie-settings`                                                       |
+| Control               | href                                   |
+| --------------------- | -------------------------------------- |
+| Skip to content       | `#skip-to-content`                     |
+| Collapsed mobile menu | `control/mobile-offer`                 |
+| Below the fold        | `control/below-fold-price-list`        |
+| Lazy-loaded           | `control/lazy-loaded-newsletter`       |
+| Low-contrast footer   | `control/low-contrast-cookie-settings` |
 
 ## Benchmark
 
@@ -66,8 +68,8 @@ Once GitHub Pages is enabled for this repo (see below), the site is served at:
 
 | Script                            | Method                                                                                               | Runs on                            |
 | --------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| `s01_bs4_find_all.py`             | BeautifulSoup `find_all('a')`                                                                        | Static HTML                        |
-| `s02_bs4_inline_style.py`         | BeautifulSoup with an inline-style filter                                                            | Static HTML                        |
+| `s01_bs4_find_all.py`             | Beautiful Soup `find_all('a')`                                                                       | Static HTML                        |
+| `s02_bs4_inline_style.py`         | Beautiful Soup with an inline-style filter                                                           | Static HTML                        |
 | `s03_selenium_is_displayed.py`    | Selenium `is_displayed()`                                                                            | Chromium, Firefox, WebKit (Safari) |
 | `s04_playwright_is_visible.py`    | Playwright `is_visible()`                                                                            | Chromium, Firefox, WebKit          |
 | `s05_playwright_click_trial.py`   | Playwright `click(trial=True)`                                                                       | Chromium, Firefox, WebKit          |
